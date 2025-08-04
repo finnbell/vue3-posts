@@ -26,8 +26,12 @@
             <li class="nav-item">
               <RouterLink class="nav-link" active-class="active" to="/posts">게시글</RouterLink>
             </li>            
-          </ul>
- 
+            <li class="nav-item">
+              <RouterLink class="nav-link" active-class="active" to="/nested">
+                Nested
+              </RouterLink>
+            </li>
+          </ul>           
 
           <div class="d-flex">
             <button class="btn btn-outline-success" type="button" @click="goPage">글쓰기</button>
