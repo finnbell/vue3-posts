@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h2>제목</h2>
-    <p>내용</p>
-    <p class="text-muted">2020-01-01</p>
+    <h2>{{ form.title }}</h2>
+    <p> {{ form.content }} </p>
+    <p class="text-muted"> {{ form.createdAt }}</p>
     <hr class="my-4"/>
     <div class="row">
       <div class="col-auto">
@@ -29,14 +29,41 @@
 </template>
 
 <script setup>
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
+import { getPostById } from '@/api/posts'
+import { reactive, ref } from 'vue'
 
-const route = useRoute();
+const props = defineProps( {
+  id: Number,
+})
+
 const router = useRouter();
-const id = route.params.id;
+//const id = route.params.id;
 
+/**
+ * ref
+ * 장) 객체 할당 가능
+ * 단) form.value.title, form.value.content
+ * 장) 일관성 
+ * 
+ * reactive
+ * 장) 객체 할당 불가능
+ * 단) form.title, form.content 
+ */
+//const form = ref({})
+let form = reactive({})
+
+
+const fetchPost = () => {
+  const data = getPostById(props.id);
+  //form.value = { ...data }
+  form.title = data.title
+  form.content = data.content
+}
+
+fetchPost()
 const goListPage = () => router.push({name:'PostList'})
-const goEditPage = () => router.push({name:'PostEdit', params:{id}})
+const goEditPage = () => router.push({name:'PostEdit', params:{ id: props.id }})
 
 
 </script>
