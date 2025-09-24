@@ -10,7 +10,7 @@ const posts = [
 ];
 
 export function getPosts(params) {
-  return axios.get('http://localhost:5000/posts', params );
+  return axios.get('http://localhost:5000/posts', { params } );
 }
 
 export function getPostById(id) {
