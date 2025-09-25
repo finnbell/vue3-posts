@@ -1,6 +1,10 @@
-import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
-import HomeView from '@/views/HomeView.vue'
-import AboutView from '@/views/AboutView.vue'
+import {
+	createRouter,
+	createWebHashHistory,
+	createWebHistory,
+} from 'vue-router';
+import HomeView from '@/views/HomeView.vue';
+import AboutView from '@/views/AboutView.vue';
 import PostCreateView from '@/views/posts/PostCreateView.vue';
 import PostDetailView from '@/views/posts/PostDetailView.vue';
 import PostEditView from '@/views/posts/PostEditView.vue';
@@ -12,74 +16,73 @@ import NestedTwoView from '@/views/nested/NestedTwoView.vue';
 import NestedHomeView from '@/views/nested/NestedHomeView.vue';
 
 const routes = [
-  {
-    path:'/',
-    name: 'Home',
-    component: HomeView,
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: AboutView,
-  },
-  {
-    path: '/posts',
-    name: 'PostList',
-    component: PostListView,
-  },
-  {
-    path: '/posts/create',
-    name: 'PostCreate',
-    component: PostCreateView,
-  }, 
-  {
-    // /user/alice 
-    // /user/bruce ---> PostDetailView
-    // /user/tom 
-    path: '/posts/:id',
-    name: 'PostDetail',
-    component: PostDetailView,
-    // props: true,
-    props: (route) => ({ id: parseInt(route.params.id) }),
-  },
-  {
-    path: '/posts/:id/edit',
-    name: 'PostEdit',
-    component: PostEditView,
-  },
-  {
-    path: '/:pathMatch(.*)*',
-    name: 'NotFound', 
-    component: NotFoundView 
-  },
-  {
-    path: '/nested',
-    name: 'NotFound', 
-    component: NestedView,
-    children: [
-        {
-          path: '',
-          name: 'nestedhome', 
-          component: NestedHomeView
-        },
-        {
-          path: 'one',
-          name: 'NestedOne', 
-          component: NestedOneView
-        },
-        {
-          path: 'two',
-          name: 'NestedTwo', 
-          component: NestedTwoView
-        },
-    ]
-  },
-
+	{
+		path: '/',
+		name: 'Home',
+		component: HomeView,
+	},
+	{
+		path: '/about',
+		name: 'About',
+		component: AboutView,
+	},
+	{
+		path: '/posts',
+		name: 'PostList',
+		component: PostListView,
+	},
+	{
+		path: '/posts/create',
+		name: 'PostCreate',
+		component: PostCreateView,
+	},
+	{
+		// /user/alice
+		// /user/bruce ---> PostDetailView
+		// /user/tom
+		path: '/posts/:id',
+		name: 'PostDetail',
+		component: PostDetailView,
+		// props: true,
+		props: route => ({ id: parseInt(route.params.id) }),
+	},
+	{
+		path: '/posts/:id/edit',
+		name: 'PostEdit',
+		component: PostEditView,
+	},
+	{
+		path: '/:pathMatch(.*)*',
+		name: 'NotFound',
+		component: NotFoundView,
+	},
+	{
+		path: '/nested',
+		name: 'NotFound',
+		component: NestedView,
+		children: [
+			{
+				path: '',
+				name: 'nestedhome',
+				component: NestedHomeView,
+			},
+			{
+				path: 'one',
+				name: 'NestedOne',
+				component: NestedOneView,
+			},
+			{
+				path: 'two',
+				name: 'NestedTwo',
+				component: NestedTwoView,
+			},
+		],
+	},
 ];
 
 const router = createRouter({
-  history: createWebHistory('/'),
-  routes,
+	history: createWebHistory('/'),
+	routes,
 });
 
 export default router;

@@ -1,15 +1,11 @@
 <template>
-  <main>
-    <div class="container py-4">
-      <RouterView></RouterView>
-    </div>
-  </main>
+	<main>
+		<div class="container py-4">
+			<RouterView></RouterView>
+		</div>
+	</main>
 </template>
 
-<script>
+<script></script>
 
-</script>
-
-<style>
-
-</style>
+<style></style>
